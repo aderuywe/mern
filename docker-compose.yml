@@ -1,0 +1,44 @@
+version: "2"
+
+services:
+  client:
+    image: mern-client
+    restart: always
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./client:/client
+      - /client/node_modules
+    links:
+      - back
+    networks:
+      - mernnetwork
+
+  back:
+    image: mern-back
+    restart: always
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./back:/back
+      - /back/node_modules
+    depends_on:
+      - mongodb
+    networks:
+      - mernnetwork
+
+  mongodb:
+    image: mongo
+    restart: always
+    container_name: mongodb
+    volumes:
+      - ./data-node:/data/db
+    ports:
+      - 27017:27017
+    command: mongod --noauth --smallfiles
+    networks:
+      - mernnetwork
+
+networks:
+  mernnetwork:
+    driver: bridge
