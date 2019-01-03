@@ -1,0 +1,23 @@
+{
+  "name": "mernapp",
+  "version": "1.0.0",
+  "description": "Application MongoDb Express React Node - Rest API with Node & Express Js Framwork - Front app with React components - Database with MongoDb",
+  "main": "index.js",
+  "dependencies": {
+    "mongoose": "^5.4.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aderuywe/mern.git"
+  },
+  "author": "anthony deruywe",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aderuywe/mern/issues"
+  },
+  "homepage": "https://github.com/aderuywe/mern#readme"
+}

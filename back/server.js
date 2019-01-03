@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 
 //Connexion à la base de donnée
-mongoose.connect('mongodb://localhost/db').then(() => {
+mongoose.connect('mongodb://localhost:5000/db').then(() => {
     console.log('Connected to mongoDB')
 }).catch(e => {
     console.log('Error while DB connecting');
@@ -41,5 +41,5 @@ app.use('/user', router);
 require(__dirname + '/controllers/userController')(router);
 
 //Définition et mise en place du port d'écoute
-var port = 8000;
+var port = 9000;
 app.listen(port, () => console.log(`Listening on port ${port}`));

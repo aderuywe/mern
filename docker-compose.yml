@@ -1,8 +1,10 @@
-version: "2"
+version: "3"
 
 services:
-  client:
-    image: mern-client
+  mern-client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
     restart: always
     ports:
       - "3000:3000"
@@ -10,15 +12,17 @@ services:
       - ./client:/client
       - /client/node_modules
     links:
-      - back
+      - mern-back
     networks:
       - mernnetwork
 
-  back:
-    image: mern-back
+  mern-back:
+    build:
+      context: ./back
+      dockerfile: Dockerfile
     restart: always
     ports:
-      - "8000:8000"
+      - "9000:9000"
     volumes:
       - ./back:/back
       - /back/node_modules
@@ -34,7 +38,7 @@ services:
     volumes:
       - ./data-node:/data/db
     ports:
-      - 27017:27017
+      - "5000:5000"
     command: mongod --noauth --smallfiles
     networks:
       - mernnetwork
